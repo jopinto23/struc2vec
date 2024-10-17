@@ -92,7 +92,10 @@ def exec_random_walk(graphs,alias_method_j,alias_method_q,v,walk_length,amount_n
 
         else:
             r = random.random()
-            limiar_moveup = prob_moveup(amount_neighbours[layer][v])
+            try:
+                limiar_moveup = prob_moveup(amount_neighbours[layer][v])
+            except KeyError:
+                return None
             if(r > limiar_moveup):
                 if(layer > initialLayer):
                     layer = layer - 1           
